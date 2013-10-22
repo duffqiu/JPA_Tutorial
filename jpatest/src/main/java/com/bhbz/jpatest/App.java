@@ -80,5 +80,9 @@ public class App {
 	    }
 	}
 
+	pollOptions.setOption_item("new item description");
+
+	pollOptionsRepository.save(pollOptions);
+
     }
 }
