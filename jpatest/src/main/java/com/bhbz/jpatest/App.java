@@ -85,7 +85,7 @@ public class App {
 	pollOptionsRepository.save(pollOptions);
 
 	Iterable<PollTopic> topicIterator = pollTopicRepository
-		.findAllByIdGreaterThan(60);
+		.findAllByIdGeaterThanOrderByTitleLowerDesc(0);
 
 	for (PollTopic pTopic : topicIterator) {
 	    System.out.println(pTopic);

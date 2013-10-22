@@ -13,6 +13,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Transient;
 
 /**
@@ -29,6 +30,7 @@ public class PollTopic extends Topic {
     private int maxChoices;
 
     @OneToMany(mappedBy = "pollTopic", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OrderBy("option DESC")
     private Set<PollOptions> options = new HashSet<>();
 
     @Transient

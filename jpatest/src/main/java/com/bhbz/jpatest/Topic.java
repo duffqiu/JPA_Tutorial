@@ -42,61 +42,69 @@ CREATE TABLE topic
 @DiscriminatorColumn(name = "TYPE", discriminatorType = DiscriminatorType.INTEGER, length = 1)
 @DiscriminatorValue(value = "1")
 public class Topic {
-	@Id
-	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-	@Column(name = "TITLE")
-	private String title;
+    @Column(name = "TITLE")
+    private String title;
 
-	@Column(name = "TIME")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date topicTime;
+    @Column(name = "TIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date topicTime;
 
-	@Column(name = "VIEWS")
-	private int views;
-	
-	
-	@Transient
-	private int type = 1;
+    @Column(name = "VIEWS")
+    private int views;
 
-	protected Topic(){
-		
-	}
-	
-	
-	/**
-	 * @param title
-	 * @param time
-	 * @param views
-	 */
-	public Topic(String title, Date time, int views) {
-		this.title = title;
-		this.topicTime = time;
-		this.views = views;
-	}
+    @Transient
+    private int type = 1;
 
-	
+    protected Topic() {
 
-	public int getId() {
-		return id;
-	}
+    }
 
+    /**
+     * @param title
+     * @param time
+     * @param views
+     */
+    public Topic(String title, Date time, int views) {
+	this.title = title;
+	this.topicTime = time;
+	this.views = views;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+	return id;
+    }
 
+    public void setId(int id) {
+	this.id = id;
+    }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Topic [id=" + id + ", title=" + title + ", topicTime="
-				+ topicTime + ", views=" + views + ", type=" + type + "]";
-	}
-	
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+	return "Topic [id=" + id + ", title=" + title + ", topicTime="
+		+ topicTime + ", views=" + views + ", type=" + type + "]";
+    }
+
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+	return title;
+    }
+
+    /**
+     * @param title
+     *            the title to set
+     */
+    public void setTitle(String title) {
+	this.title = title;
+    }
 
 }
