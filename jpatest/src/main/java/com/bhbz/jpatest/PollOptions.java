@@ -77,4 +77,19 @@ public class PollOptions {
 		+ ", displayOrder=" + displayOrder + "]";
     }
 
+    /**
+     * @return the option_item
+     */
+    public String getOption_item() {
+	return option_item;
+    }
+
+    /**
+     * @param option_item
+     *            the option_item to set
+     */
+    public void setOption_item(String option_item) {
+	this.option_item = option_item;
+    }
+
 }
