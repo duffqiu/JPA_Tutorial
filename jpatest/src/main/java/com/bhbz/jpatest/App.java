@@ -3,8 +3,7 @@
  */
 package com.bhbz.jpatest;
 
-import java.util.Iterator;
-import java.util.Set;
+import java.util.Date;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,6 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 
  *         2013年10月21日
  */
+
 public class App {
 
     /**
@@ -52,7 +52,7 @@ public class App {
 		pollOptionSet.add(pollOptions1);
 		pollOptionSet.add(pollOptions2);
 
-		pollTopic.setOptions(pollOptionSet);*/
+		pollTopic.setOptions(pollOptionSet);
 
 	PollTopicRepository pollTopicRepository = context
 		.getBean(PollTopicRepository.class);
@@ -89,6 +89,19 @@ public class App {
 
 	for (PollTopic pTopic : topicIterator) {
 	    System.out.println(pTopic);
+	}*/
+
+	OrderRepository orderRepository = context
+		.getBean(OrderRepository.class);
+
+	orderRepository.save(new Order(1l, 1, "Order One",
+		"This is a very long description", new Date(System
+			.currentTimeMillis())));
+
+	Iterable<Order> iterators = orderRepository.findAll();
+
+	for (Order order : iterators) {
+	    System.out.println(order);
 	}
 
     }
