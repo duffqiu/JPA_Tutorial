@@ -25,4 +25,6 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
     // must use the Entity's name not table's name
     @Query("from CUSTOMER u where u.id = :id")
     Customer findBySpecificId(@Param("id") int id);
+    
+    Iterable<Customer> findAllByIdAndType(int id, int type);
 }
