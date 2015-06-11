@@ -6,6 +6,8 @@ package com.bhbz.jpatest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.hbhz.tutorial.ejbspring.order.OrderService;
+
 /**
  * @author macbook
  * 
@@ -122,6 +124,7 @@ public class App {
 			}*/
 
 	//Try customer @IdClass for primary key
+	/*
 	CustomerRepository customerRepository = context
 		.getBean(CustomerRepository.class);
 
@@ -134,7 +137,11 @@ public class App {
 	Iterable<Customer> customers = customerRepository.findAll();
 	for (Customer customer : customers) {
 	    System.out.println(customer);
-	}
+	}*/
+
+	OrderService orderservice = (OrderService) context.getBean("orderBean");
+
+	System.out.println(orderservice.createOrder());
 
     }
 }

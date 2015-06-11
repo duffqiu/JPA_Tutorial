@@ -3,23 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
-
-	
-	
-	<!--  
-	  
-	<bean
-		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor">
-    </bean>
-	<bean
-		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor">
-    </bean>
-    -->
-    
     
 	<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
 		<property name="poolProperties">
@@ -71,4 +60,11 @@
     
     <jpa:repositories base-package="com.bhbz.jpatest"/>
     
+    
+    <jee:jndi-lookup
+    	jndi-name="ejb3-springtest-release/OrderServiceBean"
+    	id="orderBean">
+    <jee:environment>java.naming.factory.initial = org.apache.openejb.client.RemoteInitialContextFactory
+java.naming.provider.url = http://localhost:8080/tomee/ejb</jee:environment>
+    </jee:jndi-lookup>
 </beans>
